@@ -63,9 +63,9 @@ int train_data(
 	cout << "cross validation: \n" <<
 		cross_validate_multiclass_trainer(trainer, samples, labels, 5) << endl;
 	*/
-	trainer.set_c(100);
-	cout << "cross validation: \n" <<
-		cross_validate_multiclass_trainer(trainer, samples, labels, 9) << endl;
+	trainer.set_c(100);// it good!
+	// cout << "cross validation: \n" <<
+	// 	cross_validate_multiclass_trainer(trainer, samples, labels, 9) << endl;
 
 	// Train and obtain the decision rule
 	multiclass_linear_decision_function<lin_kernel, unsigned long> df = trainer.train(samples, labels);
