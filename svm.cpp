@@ -15,7 +15,7 @@ using namespace dlib;
 typedef matrix<double, 128, 1> sample_type;
 
 void generate_data(
-	std::vector<sample_type>& samples,
+	std::vector<sample_type>& samples, 
 	std::vector<matrix<float, 0, 1>> data_face_descriptors
 );
 
@@ -26,10 +26,10 @@ int train_data(
 	std::vector<unsigned long> labels
 )
 {
-	/*
-		std::vector<sample_type> samples;
-		std::vector<string> labels;
-	*/
+/*
+	std::vector<sample_type> samples;
+	std::vector<string> labels;
+*/
 	std::vector<sample_type> samples;
 	// First, get our labeled set of training data
 	generate_data(samples, data_face_descriptors);
@@ -63,9 +63,9 @@ int train_data(
 	cout << "cross validation: \n" <<
 		cross_validate_multiclass_trainer(trainer, samples, labels, 5) << endl;
 	*/
-	trainer.set_c(100);// it good!
-	// cout << "cross validation: \n" <<
-	// 	cross_validate_multiclass_trainer(trainer, samples, labels, 9) << endl;
+	trainer.set_c(100);
+	cout << "cross validation: \n" <<
+		cross_validate_multiclass_trainer(trainer, samples, labels, 9	) << endl;
 
 	// Train and obtain the decision rule
 	multiclass_linear_decision_function<lin_kernel, unsigned long> df = trainer.train(samples, labels);
@@ -111,5 +111,5 @@ void predict(std::vector<matrix<float, 0, 1>> face_descriptors)
 	multiclass_linear_decision_function<lin_kernel, unsigned long> df;
 	deserialize("svm.dat") >> df;
 
-	cout << "predict label: " << df(samples[0]) << endl;
+	cout << "predict label: " << df(samples[0])<<endl;
 }

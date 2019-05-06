@@ -48,13 +48,12 @@ try
 			//load_image(img, "input.jpg");
 
 			//load ảnh từ camera
-			assign_image(img, image);
+			assign_image(img, image);							
 
 			//load các mặt trong ảnh, convert ra 128
 			std::vector<matrix<float, 0, 1>> face_descriptors = detect_camera(img);
 
 			cout << "so khuan mat phat hien ra la: " << face_descriptors.size() << endl;
-			unsigned long a;
 			predict(face_descriptors);
 			//a = predict(face_descriptors[0], data_face_descriptors, labels);
 			//cout << a << endl;
